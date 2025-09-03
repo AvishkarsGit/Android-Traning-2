@@ -9,14 +9,13 @@
     tools:context=".MainActivity">
 
     <EditText
+        android:id="@+id/edtFirst"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtFirst"
-        android:hint="Enter first value"
-        android:textColor="@color/black"
-        android:inputType="number"
         android:layout_margin="20dp"
-        />
+        android:hint="Enter first value"
+        android:inputType="number"
+        android:textColor="@color/black" />
 
     <EditText
         android:layout_width="match_parent"

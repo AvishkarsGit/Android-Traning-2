@@ -36,81 +36,33 @@ public class MainActivity extends AppCompatActivity {
         //click on add button
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                 String firstVal = edtFirst.getText().toString();
-                 String secondVal = edtSecond.getText().toString();
-
-                 if (firstVal.equals("") || secondVal.equals("")) {
-                     Toast.makeText(MainActivity.this,"Empty fields are not allowed",Toast.LENGTH_LONG).show();
-                 }
-                 else {
-                     int num1 = Integer.parseInt(firstVal);
-                     int num2 = Integer.parseInt(secondVal);
-
-                     int result = num1 + num2;
-                     tvResult.setText("Result :"+result);
-                 }
-
+            public void onClick(View view) {
+                calculate(view.getId()); //R.id.btnAdd
             }
         });
 
         //click on subtract button
         btnSubtract.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String firstVal = edtFirst.getText().toString();
-                String secondVal = edtSecond.getText().toString();
-
-                if (firstVal.equals("") || secondVal.equals("")) {
-                    Toast.makeText(MainActivity.this,"Empty fields are not allowed",Toast.LENGTH_LONG).show();
-                }
-                else {
-                    int num1 = Integer.parseInt(firstVal);
-                    int num2 = Integer.parseInt(secondVal);
-
-                    int result = num1 - num2;
-                    tvResult.setText("Result :"+result);
-                }
+            public void onClick(View view) {
+                calculate(view.getId());
             }
         });
 
         //click on division button
-//        btnDiv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String firstVal = edtFirst.getText().toString();
-//                String secondVal = edtSecond.getText().toString();
-//
-//                if (firstVal.equals("") || secondVal.equals("")) {
-//                    Toast.makeText(MainActivity.this,"Empty fields are not allowed",Toast.LENGTH_LONG).show();
-//                }
-//                else {
-//                    int num1 = Integer.parseInt(firstVal);
-//                    int num2 = Integer.parseInt(secondVal);
-//
-//                    int result = num1 / num2; //logic
-//                    tvResult.setText("Result :"+result);
-//                }
-//            }
-//        });
+        btnDiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculate(v.getId());
+
+            }
+        });
 
         //click on multiply button
         btnMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String firstVal = edtFirst.getText().toString();
-                String secondVal = edtSecond.getText().toString();
-
-                if (firstVal.equals("") || secondVal.equals("")) {
-                    Toast.makeText(MainActivity.this,"Empty fields are not allowed",Toast.LENGTH_LONG).show();
-                }
-                else {
-                    int num1 = Integer.parseInt(firstVal);
-                    int num2 = Integer.parseInt(secondVal);
-
-                    int result = num1 * num2; //logic
-                    tvResult.setText("Result :"+result);
-                }
+                calculate(v.getId());
             }
         });
 
@@ -125,4 +77,45 @@ public class MainActivity extends AppCompatActivity {
         btnMultiply = findViewById(R.id.btnMultiply);
         tvResult = findViewById(R.id.tvResult);
     }
+
+    private int validateData(int id){
+        String firstValue = edtFirst.getText().toString();
+        String secondValue = edtSecond.getText().toString();
+
+        if(firstValue.isEmpty() || secondValue.isEmpty() ) {
+            Toast.makeText(this, "Empty fields are not allowed", Toast.LENGTH_SHORT).show();
+            return Integer.MIN_VALUE;
+        }
+        else {
+            int num1 = Integer.parseInt(firstValue);
+            int num2 = Integer.parseInt(secondValue);
+
+            if (id == R.id.btnAdd) {
+                return num1 + num2;
+            }
+            else if (id ==R.id.btnSubtract) {
+                return num1 - num2;
+            }
+            else if (id == R.id.btnDiv) {
+                return num1 / num2;
+            }
+            else if (id == R.id.btnMultiply) {
+                return num1 * num2;
+            }
+            else {
+                return Integer.MIN_VALUE;
+            }
+        }
+    }
+
+    private void calculate(int id) {
+        //id = R.id.btnAdd
+        double result = validateData(id);  //R.id.btnAdd;
+        if (result != Integer.MIN_VALUE) {
+            tvResult.setText("Result : "+result);
+        }
+    }
+
+
+
 }
