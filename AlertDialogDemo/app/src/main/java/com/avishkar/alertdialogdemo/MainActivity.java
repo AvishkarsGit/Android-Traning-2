@@ -65,27 +65,32 @@ public class MainActivity extends AppCompatActivity {
     private void openDialogWithBuilder() {
          AlertDialog.Builder dialog =  new AlertDialog.Builder(MainActivity.this);
          dialog.setTitle("Delete");
-         dialog.setMessage("Are you sure you wants to delete this message?");
+        // dialog.setMessage("Are you sure you wants to delete this message?");
 
 
-         String buttons[] = new String[] {
-           "Camera","Gallery","Cancel"
-         };
-
-         dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+         String arr[] = {"Red","Orange","Blue","Dark","white"};
+         dialog.setItems(arr, new DialogInterface.OnClickListener() {
              @Override
-             public void onClick(DialogInterface dialog, int which) {
-                 Toast.makeText(MainActivity.this, "Yes", Toast.LENGTH_SHORT).show();
+             public void onClick(DialogInterface dialog, int i) {
+                 String selected = arr[i];
+                 Toast.makeText(MainActivity.this, "selected:"+selected, Toast.LENGTH_SHORT).show();
              }
          });
 
-         dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-             @Override
-             public void onClick(DialogInterface dialog, int which) {
-                 Toast.makeText(MainActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
-                 dialog.dismiss();
-             }
-         });
+//         dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//             @Override
+//             public void onClick(DialogInterface dialog, int which) {
+//                 Toast.makeText(MainActivity.this, "Yes", Toast.LENGTH_SHORT).show();
+//             }
+//         });
+//
+//         dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//             @Override
+//             public void onClick(DialogInterface dialog, int which) {
+//                 Toast.makeText(MainActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
+//                 dialog.dismiss();
+//             }
+//         });
 
          dialog.show();
     }
