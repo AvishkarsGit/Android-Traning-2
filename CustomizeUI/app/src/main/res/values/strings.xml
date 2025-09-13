@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Customize UI</string>
+    <string name="register_text">Login Form</string>
+    <string name="new_user_signup">New user ? <b>Create Account</b></string>
+</resources>
