@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnOpenDialog;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void openDialog() {
+    private void openDialog() {
             AlertDialog dialog = new AlertDialog.Builder(this).create();
             dialog.setTitle("Delete");
             dialog.setMessage("Are you sure you wants to delete this message?");
